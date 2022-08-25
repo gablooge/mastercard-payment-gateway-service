@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script src="https://ap-gateway.mastercard.com/static/checkout/checkout.min.js" data-error="errorCallback" data-cancel="cancelCallback"></script>
+
+    <script>
+        function errorCallback(error) {
+            console.log(JSON.stringify(error));
+        }
+        function cancelCallback() {
+                console.log('Payment cancelled');
+        }
+        Checkout.configure({
+            session: {
+                id: '{{ session_id }}'
+            },
+            interaction: {
+                merchant: {
+                    name: 'Hsenid Mobile',
+                    address: {
+                        line1: '200 Sample St',
+                        line2: '1234 Example Town'
+                    }
+                }
+            }
+        });
+        Checkout.showPaymentPage()
+    </script>
+</body>
+</html>
