@@ -31,6 +31,7 @@ def send_checkout_request():
        #get session id
         session_id =str(response.content).split('&')[2].split('=')[1]
         #todo validate session_id
+        print(response.content)
         return render_template("template.html",session_id=session_id)
     except Exception as e:
         print(e)
